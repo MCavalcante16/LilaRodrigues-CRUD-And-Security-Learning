@@ -1,0 +1,489 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    list-style: none;
+
+}
+
+a{
+    text-decoration-style: none;
+}
+
+#logo{
+    padding-top: 90px;
+    padding-left: 620px;
+    width: 120px;
+    height: 120px;
+    
+}
+
+.sections{
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-bottom: 70px;
+}
+
+.sections2{
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-bottom: 100px;
+}
+
+
+
+.feed{
+    max-width: 2500px;
+    max-height: 500px;
+    padding-bottom: 150px;
+    background-repeat: no-repeat;
+}
+
+
+#init1{
+    background-image: url("../img/1.png");
+}
+
+#init2{
+    background-image: url("../img/2.png");
+}
+
+#init3{
+    background-image: url("../img/3.png");
+}
+
+#init4{
+    background-image: url("../img/4.png");
+}
+
+#init5{
+    background-image: url("../img/5.png");
+}
+
+#init6{
+    background-image: url("../img/6.png");
+}
+
+#init7{
+    background-image: url("../img/7.png");
+}
+
+#init8{
+    background-image: url("../img/8.png");
+}
+
+#init9{
+    background-image: url("../img/9.png");
+}
+
+#init10{
+    background-image: url("../img/10.png");
+}
+
+
+#title{
+    position: static;   
+    font-family: 'Great Vibes', cursive;
+    font-size: 50px;
+    text-align: center;
+
+    color: #E69A68;
+
+    text-shadow: 5px 3px 5px black;
+}
+
+#subtitle{
+    position: static;
+    font-family: 'Great Vibes', cursive;
+    font-size: 190px;
+    text-align: center;
+    color: #E69A68;
+    margin-top: -15px;
+    text-shadow: 10px 5px 10px  black;
+}
+
+.textOpenFeed{
+    position: static;
+    font-family: 'Julius Sans One', sans-serif;
+    background-color: brown;
+    color: #E69A68;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 22px;
+    background-size: 100px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+#menu{
+    display: flex;
+    flex: 1; 
+    position: fixed;
+    justify-content: center;
+    background-color:brown;
+    text-align: center;
+    background-size: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    object-position: center;
+    padding-right: 100%;
+    padding-left: 10%;
+    opacity: 0.8;
+}
+
+#menu ul{
+    display: flex;
+    text-align: center;
+}
+
+#menu li a{
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 30px;
+    margin-left: 90px;
+    background-attachment: fixed;
+    text-align: center;
+    color: #E69A68;
+    text-shadow: 10px 5px 10px black;
+    flex-direction: row;
+    text-align: center;
+    flex-grow: 1;
+    
+}
+
+
+
+
+.feedText1{
+    font-family: 'Great Vibes', cursive;
+    text-align: center;
+    font-size: 70px;;
+}
+
+.feedText2{
+    font-family: 'Julius Sans One', sans-serif;
+    text-align: center;
+}
+
+#ft11{
+    padding-top: 80px;
+    font-size: 70px;
+}
+
+#ft12{
+    padding-left: 480px;
+    font-size: 40px;
+    font-weight: 300px;
+    width: 400px;
+    
+}
+
+
+#ft21{
+    font-size:70px;
+    padding-top: 140px;
+}
+
+#ft22, #ft23, #ft24, #ft25{
+    font-size: 30px;
+}
+
+#ft22{
+    padding-top: 20px;
+}
+
+#ft26{
+    font-size: 70px;
+    padding-top: 20px;
+}
+
+#ft31{
+    padding-top: 100px;
+}
+
+#ft32{
+    padding-top: 10px;
+}
+
+#ft32, #ft33, #ft34, #ft35, #ft36, #ft37, #ft38{
+    font-size:25px;
+}
+
+#ft39{
+    padding-top: 20px;
+}
+
+#ft41{
+    padding-top: 110px;
+}
+
+#ft42{
+    padding-top: 10px;
+}
+
+#ft42, #ft43, #ft44, #ft45, #ft46, #ft47{
+    font-size: 30px;
+}
+
+#ft48{
+    padding-top: 10px;
+}
+
+#ft51{
+    padding-top: 120px;
+}
+
+#ft52{
+    padding-top: 20px;
+}
+
+#ft52, #ft53, #ft54, #ft55, #ft56, #ft57, #ft58{
+    font-size:25px;
+}
+
+#ft59{
+    padding-top: 20px;
+}
+
+
+#ft61{
+    font-size: 100px;
+    padding-top: 200px;
+}
+
+#ft62{
+    padding-top: 40px;
+}
+
+#ft62, #ft63, #ft64{
+    
+    font-size: 30px;
+    
+}
+
+#ft64{
+    padding-bottom: 70px;
+}
+
+#init8 p{
+    padding-right: 900px;
+}
+
+#ft71{
+    padding-top: 100px;
+}
+
+#ft72{
+    padding-top: 20px;
+}
+
+#ft72, #ft73, #ft74, #ft75, #ft76, #ft77{
+    font-size: 20px;
+}       
+
+#ft78{
+    padding-top: 20px;  
+}
+
+#init9 p{
+    padding-left: 550px;
+}
+
+#ft81{
+    padding-top: 100px;
+}
+
+#ft82{
+    padding-top: 20px;
+}
+
+#ft83{
+    padding-bottom: 40px;
+}
+
+#ft84{
+    padding-top:20px;
+}
+
+#ft85{
+    padding-top: 10px;
+}
+
+#ft82, #ft83, #ft85, #ft86, #ft87{
+    font-size: 25px;
+}
+
+#ft88{
+    padding-top: 20px;
+    font-size: 40px;
+}
+
+#ft89{
+    font-size: 40px;
+}
+
+#endFeed ul{
+    display: flex;
+    text-align: center;
+}
+
+#tc1{
+    padding-top: 150px;
+}
+
+#tc2, #tc3{
+    padding-top: 80px;
+    font-size: 40px;
+}
+
+#column1, #column2, #column3{
+    padding-left: 83px;
+    padding-right: 83px;
+}
+
+
+#column1{
+    padding-left: -50px;
+}
+
+#c21{
+    padding-top:480px;
+}
+
+#tc31{
+    padding-top: 200px;
+}
+
+#c33{
+    padding-top:30px;
+}
+
+#c35{
+    padding-top:30px;
+}
+
+
+#init12{
+    background-image: url("../img/1\(1\).png");
+    background-size: cover; 
+    background-attachment: fixed;
+
+}
+
+#logo2{
+    width: 200px;
+    height: 200px;
+    padding-top: 90px;
+    padding-left: 580px;
+}
+
+#subtitle2{
+    position: static;
+    font-family: 'Great Vibes', cursive;
+    font-size: 190px;
+    text-align: center;
+    color: #E69A68;
+    margin-top: -15px;
+    margin-left: -50px;
+    text-shadow: 10px 5px 10px  black;
+}
+
+#init22{
+    background-image: url("../img/2\(1\).png");
+    max-width: 2500px;
+    max-height: 500px;
+    padding-bottom: 150px;
+    
+}
+
+#sobreText{
+    padding-top: 120px;
+    padding-left: 300px;
+    font-size: 40px;
+    width: 800px;
+    height: 800px;
+}
+
+#init13{
+    background-image: url("../img/bolos.jpg");
+    background-size: cover;
+    padding-bottom: 100px;
+}
+
+#init32{
+    background-color: white;
+    padding-bottom: 0px;
+}
+
+
+.img{
+    width: 200px;
+    height: 200px;
+    border-color: brown;
+    border-width: 100px;
+    border-radius: 300px;
+}
+
+.item{
+    padding-left: 100px;
+    padding-top: 30px;
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+}
+
+.txtBolos{
+    font-family: 'Julius Sans One', sans-serif;
+    text-align: center;
+    font-size: 20px;
+} 
+ 
+.galery ul li{
+    display: inline;
+ 
+    flex: 1;
+    flex-direction: row;
+}
+
+.img{
+    display: inline-block;
+}
+
+#especiais{
+    padding-top:100px;
+}
+
+#showMore{
+    margin-top: 100px;
+}
+
+#plusGalery{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+#init41{
+    background-image: url("..//img/contato.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    max-height: 550px;
+}
+
+#faixaRed{
+    margin-top:50px;
+}
+
+#encomenda{
+    padding-top:150px;
+}
+
+#selec{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#formulario{
+    padding-bottom: 100px;
+}
