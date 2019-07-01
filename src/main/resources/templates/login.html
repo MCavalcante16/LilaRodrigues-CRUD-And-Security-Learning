@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lila Rodrigues Bolos Artísticos</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/css.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Julius+Sans+One|Sacramento" rel="stylesheet">
+</head>
+<body>
+    <section class="sections" id="init1">
+        <div id="menu">
+            <ul>
+                <li id="inicio">
+                    <a th:href = "@{/inicio}">Início</a>
+                </li>
+                <li id="sobre">
+                    <a th:href = "@{/sobre}" >Sobre</a>
+                </li>
+                <li id="bolos">
+                    <a th:href = "@{/bolos}">Bolos</a>
+                </li>
+                <li id="contato">
+                    <a th:href = "@{/contato}">Contato</a>
+                </li>
+                <li id="cadastro">
+                    <a th:href = "@{/cadastro}">Cadastro</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+	<form action="/login" id="selec" method="POST">
+    <section id="formulario">
+        <p class="feedText1" id="encomenda">Entre em sua conta e realize encomendas</p><br><br>
+
+            <p class="feedText2" id="nome">Login: </p>         <input type="text" name="username" size="25px"><br>
+            <br>
+            <p class="feedText2" id="cpf">Senha: </p>      <input type="password" name="password" size="25px"><br>
+            <br>
+            <input type="submit" style="font-family: 'Julius Sans One', sans-serif" value="Logar">
+    </section>
+    </form>
+
+</body>
+</html>

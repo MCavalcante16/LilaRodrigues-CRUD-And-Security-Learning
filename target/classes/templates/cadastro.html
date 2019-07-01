@@ -1,29 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lila Rodrigues Bolos Artísticos</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/css.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/css.css">
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Julius+Sans+One|Sacramento" rel="stylesheet">
 </head>
 <body>
     <section class="sections" id="init1">
-        <div id="menu">
+	    <a id="loginbutton" class="btn btn-primary" th:href="@{/login}" role="button">Login</a>
+	    <a id="logoutbutton" class="btn btn-primary" th:href="@{/login?logout}" role="button" sec:authorize="hasRole('ROLE_USER')">Logout</a>
+	    <a id="logoutbutton" class="btn btn-primary" th:href="@{/login?logout}" role="button" sec:authorize="hasRole('ROLE_ADMIN')">Logout</a>
+	       <div id="menu">
             <ul>
                 <li id="inicio">
-                    <a href="inicio.html">Início</a>
+                    <a th:href = "@{/inicio}">Início</a>
                 </li>
                 <li id="sobre">
-                    <a href="sobre.html" >Sobre</a>
+                    <a th:href = "@{/sobre}" >Sobre</a>
                 </li>
                 <li id="bolos">
-                    <a href="bolos.html">Bolos</a>
+                    <a th:href = "@{/bolos}">Bolos</a>
                 </li>
                 <li id="contato">
-                    <a href="contato.html">Contato</a>
+                    <a th:href = "@{/contato}">Contato</a>
                 </li>
                 <li id="cadastro">
                     <a>Cadastro</a>
@@ -38,20 +43,39 @@
 
 
     </section>
+    
+	<form action="/cadastro/new" method="POST" enctype="multipart/form-data" th:object="${usuario}" id="selec">
+	
+	<section id="formulario">
 
-    <section id="formulario">
+    
+    	<div class="alert alert-success" role="alert"
+			th:if="${!#strings.isEmpty(mensagem)}">
+			<span th:text="${mensagem}"></span>
+		</div>
+		<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+			<div th:each="detailedError : ${#fields.detailedErrors()}">
+				<span th:text="${detailedError.message}"> </span>
+			</div>
+		</div>
+		
+
         <p class="feedText1" id="encomenda">Insira suas informações</p><br><br>
-        <form action="demo_form.asp" id="selec">
-            <p class="feedText2" id="nome">Nome: </p>         <input type="text" name="nm" size="50px"><br>
-            <p class="feedText2" id="email">E-mail: </p>      <input type="text" name="eml" size="50px"><br>
-            <p class="feedText2" id="telefone">Telefone:</p>  <input type="tel" name="tel" size="50px" id="telef"><br>
-            <p class="feedText2" id="mensagem">Mensagem: </p> 
-            <textarea rows="8" cols="50">
-            </textarea>
+        	<input type="hidden" th:field="*{id}">	
+            <p class="feedText2" id="nome">    Nome: </p>               <input type="text"     size="50px" th:field="*{nome}"/><br>
+            <p class="feedText2" id="cpf">     Cpf: </p>      	        <input type="text"     size="50px" th:field="*{cpf}"/><br>
+            <p class="feedText2" id="data">    Data de Nascimento:</p>  <input type="text"     size="50px" th:field="*{dataNasc}"/><br>
+            <p class="feedText2" id="endereço">Endereço: </p>           <input type="text"     size="50px" th:field="*{endereco}"/><br>   
+            <p class="feedText2" id="login">   Login:</p>    	        <input type="text"     size="50px" th:field="*{login}"/><br>
+            <p class="feedText2" id="senha">   Senha:</p>               <input type="text"     size="50px" th:field="*{senha}"/><br>               
+            <p class="feedText2" id="email">   E-mail: </p>             <input type="text"     size="50px" th:field="*{email}"/><br>      
             <br>
-            <button style="font-family: 'Julius Sans One', sans-serif" href="#"> Enviar Mensagem </button>
-        </form>
+
+
+            <input style="font-family: 'Julius Sans One', sans-serif" value="Cadastrar" type="submit"/>
+
     </section>
+	</form>     
 
 </body>
 </html>

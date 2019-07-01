@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lila Rodrigues Bolos Artísticos</title>
+      <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />	
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/css.css">
+  
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Julius+Sans+One|Sacramento" rel="stylesheet">
+</head>
+<body>
+    <section class="sections" id="init13">
+	    <a id="loginbutton" class="btn btn-primary" th:href="@{/login}" role="button">Login</a>
+	    <a id="logoutbutton" class="btn btn-primary" th:href="@{/login?logout}" role="button" sec:authorize="hasRole('ROLE_USER')">Logout</a>
+	    <a id="logoutbutton" class="btn btn-primary" th:href="@{/login?logout}" role="button" sec:authorize="hasRole('ROLE_ADMIN')">Logout</a>
+	   
+         <div id="menu">
+            <ul>
+                <li id="inicio">
+                    <a th:href = "@{/inicio}">Início</a>
+                </li>
+                <li id="sobre">
+                    <a th:href = "@{/sobre}" >Sobre</a>
+                </li>
+                <li id="bolos">
+                    <a th:href = "@{/bolos}">Bolos</a>
+                </li>
+                <li id="contato">
+                    <a th:href = "@{/contato}">Contato</a>
+                </li>
+                <li id="cadastro">
+                    <a th:href = "@{/cadastro}">Cadastro</a>
+                </li>
+            </ul>
+            <span id="carrinho" sec:authorize="isAuthenticated()">
+                	<a class="btn btn-primary" th:href="@{/carrinho}">Carrinho</a>
+            </span>
+        </div>
+
+    <img id="logo2" src="img/logopaintnet.png">
+    <h1 class="textTop" id="subtitle2">Bolos</h1><br>
+    <h1  class="textOpenFeed" id="confira">Confira abaixo nossa galeria</h1>
+    </section>
+    <section id="init32">
+        
+        <div id="galery">
+        
+            <p class="feedText1" id="especiais">Bolos Disponíveis para Encomenda</p>
+            <a th:href="@{bolos/newForm}">
+            <button sec:authorize="hasRole('ROLE_ADMIN')" type="button" class="btn btn-primary btn-lg btn-block">Cadastrar Bolos</button>
+            </a>
+            <ul class="list-group list-group-horizontal">
+                <li class="flex-fill list-group-item" th:each = "bolo: ${carrinho}">
+                    <div id="1">
+                    <div class="text-center">
+                    <img th:src="@{'/../../images/'+${bolo.nome}+.png}" class="rounded-circle img-thumbnail" id="item1" style="width: 100%; max-width: 300px;">
+                    </div>
+                    <p class="txtBolos" id="it1" th:text="${bolo.nome}" style="padding-top: 20px;"></p>
+                    <p class="txtBolos" id="ip1" th:text="'R$ '+${bolo.preco}" style="margin-top: -10px; font-size:25px"></p>
+                    
+                    <div class="text-center">
+                    <a sec:authorize="hasRole('ROLE_USER')" th:href = "@{/bolos/excluir/{id}(id = ${bolo.id})}"><button type="button" class="btn btn-danger">Excluir</button> </a>
+					
+                    </div>
+                    
+                    </div>
+                </li>
+                <a sec:authorize="hasRole('ROLE_USER')" th:href = "@{/carrinho/pedir}"><button type="button" class="btn btn-danger">Pedir</button></a>
+            </ul>
+        </div>
+    </section>
+    <section class="sections2" id="init10">
+            <div id="endFeed">
+                    <ul>
+                        <li id="column1">
+                            <p class="feedText1" id="tc1">Encomendas</p>
+                            <p class="feedText2" id="c11">Em horário comercial</p>
+                            <p class="feedText2" id="c12">através do Whatsapp:</p>
+                            <p class="feedText2" id="c13">(85) 99938 7070</p>
+
+                            <p class="feedText1" id="tc2">Prazo para encomendas</p>
+                            <p class="feedText2" id="c14">Até dia 16/04</p>
+
+                            <p class="feedText1" id="tc3">Retirada</p>
+                            <p class="feedText2" id="c15">Até dia 20/04</p>
+                        </li>
+
+                        <li id="column2">
+                            <p class="feedText2" id="c21">Dálila Rodrigues é formada em</p>
+                            <p class="feedText2" id="c22">gastronomia pela</p>
+                            <p class="feedText2" id="c23">Universidade Federal do Ceará</p>
+                        </li>
+
+                        <li id="column3">
+                                <p class="feedText1" id="tc31">Atenção</p>
+                                <p class="feedText2" id="c31">Não trabalhamos com</p>
+                                <p class="feedText2" id="c32">pronta entrega</p>
+
+                                <p class="feedText2" id="c33">Encomendas com no</p>
+                                <p class="feedText2" id="c34">minimo 24h de antecedência</p>
+
+                                <p class="feedText2" id="c35">Pagamento somente em</p>
+                                <p class="feedText2" id="c36">dinheiro ou por</p>
+                                <p class="feedText2" id="c37">trasferência bancária</p>
+                        </li>
+                    </ul>
+                </div>
+    </section>
+</div>
+
+    <script src="/jquery/jquery.js"></script>
+<script>
+    $(document).ready(function(){    
+        $("#subtitle2").hide();
+        $("#subtitle2").fadeIn(2000);
+        $("#menu").hide();
+            $("#menu").fadeIn(2500);
+        $("#logo2").hide();
+        $("#logo2").fadeIn(2000);
+        $("#plusGalery").hide();
+        $("#showMore").click(function(){
+            $("#plusGalery").slideDown(2000);
+        })
+        $("#confira").hide();
+        $("#confira").fadeIn(2000);
+    });
+
+</script>
+
+    
+</body>
+</html>

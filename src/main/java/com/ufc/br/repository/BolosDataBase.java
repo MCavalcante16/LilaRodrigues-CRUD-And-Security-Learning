@@ -8,4 +8,5 @@ import com.ufc.br.model.Bolo;
 
 @Repository
 public interface BolosDataBase extends JpaRepository<Bolo, Long> {
+
 }

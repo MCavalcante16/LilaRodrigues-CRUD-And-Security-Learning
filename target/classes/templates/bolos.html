@@ -1,33 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lila Rodrigues Bolos Artísticos</title>
+      <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />	
     <link rel="stylesheet" type="text/css" media="screen" href="css/css.css">
+  
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Julius+Sans+One|Sacramento" rel="stylesheet">
 </head>
 <body>
     <section class="sections" id="init13">
-        <div id="menu">
+	    <a id="loginbutton" class="btn btn-primary" th:href="@{/login}" role="button">Login</a>
+	    <a id="logoutbutton" class="btn btn-primary" th:href="@{/login?logout}" role="button" sec:authorize="hasRole('ROLE_USER')">Logout</a>
+	    <a id="logoutbutton" class="btn btn-primary" th:href="@{/login?logout}" role="button" sec:authorize="hasRole('ROLE_ADMIN')">Logout</a>
+	   
+         <div id="menu">
             <ul>
                 <li id="inicio">
-                    <a href="inicio.html">Início</a>
+                    <a th:href = "@{/inicio}">Início</a>
                 </li>
                 <li id="sobre">
-                    <a href="sobre.html">Sobre</a>
+                    <a th:href = "@{/sobre}" >Sobre</a>
                 </li>
                 <li id="bolos">
                     <a>Bolos</a>
                 </li>
                 <li id="contato">
-                    <a href="contato.html">Contato</a>
+                    <a th:href = "@{/contato}">Contato</a>
+                </li>
+                <li id="cadastro">
+                    <a th:href = "@{/cadastro}">Cadastro</a>
                 </li>
             </ul>
+            <span id="carrinho" sec:authorize="isAuthenticated()">
+                	<a class="btn btn-primary" th:href="@{/carrinho}">Carrinho</a>
+            </span>
         </div>
-    </div>
+
     <img id="logo2" src="img/logopaintnet.png">
     <h1 class="textTop" id="subtitle2">Bolos</h1><br>
     <h1  class="textOpenFeed" id="confira">Confira abaixo nossa galeria</h1>
@@ -35,130 +48,27 @@
     <section id="init32">
         
         <div id="galery">
-            <p class="feedText1" id="especiais">Especiais</p>
-            <ul>
-                <li class="item">
+        
+            <p class="feedText1" id="especiais">Bolos Disponíveis para Encomenda</p>
+            <a th:href="@{bolos/newForm}">
+            <button sec:authorize="hasRole('ROLE_ADMIN')" type="button" class="btn btn-primary btn-lg btn-block">Cadastrar Bolos</button>
+            </a>
+            <ul class="list-group list-group-horizontal">
+                <li class="flex-fill list-group-item" th:each = "bolo: ${listaBolos}">
                     <div id="1">
-                    <img src="img/hero.jpg" class="img" id="item1" size>
-                    <p class="txtBolos" id="it1">Tema heróico</p>
-                    <p class="txtBolos" id="ip1">R$ 60,00</p>
+                    <div class="text-center">
+                    <img th:src="@{'/../../images/'+${bolo.nome}+.png}" class="rounded-circle img-thumbnail" id="item1" style="width: 100%; max-width: 300px;">
                     </div>
-                </li>
-                <li class="item">
-                    <img src="img/sacramental.jpg" class="img" id="item2" size>
-                    <p class="txtBolos" id="it2">Sacramental</p>
-                    <p class="txtBolos" id="ip2">R$ 60,00</p>
+                    <p class="txtBolos" id="it1" th:text="${bolo.nome}" style="padding-top: 20px;"></p>
+                    <p class="txtBolos" id="ip1" th:text="'R$ '+${bolo.preco}" style="margin-top: -10px; font-size:25px"></p>
                     
-                </li>
-                <li class="item">
-                    <img src="img/christimas.jpg" class="img" id="item3" size>
-                    <p class="txtBolos" id="it3">Christimas</p>
-                    <p class="txtBolos" id="ip3">R$ 60,00</p>
-                </li>
-                <li class="item">
-                    <img src="img/casamento.jpg" class="img" id="item4" size>
-                    <p class="txtBolos" id="it4">Casamento</p>
-                    <p class="txtBolos" id="ip4">R$ 100,00</p>
-                </li>
-            </ul>
-            <p class="feedText1" id="especiais">Cup-Cakes</p>
-            <ul>
-                    <li class="item">
-                        <img src="img/carnival.jpg" class="img" id="item1" size>
-                        <p class="txtBolos" id="it1">Carnival Cup-Cakes</p>
-                        <p class="txtBolos" id="ip1">R$ 50,00 - 20und</p>
-                    </li>
-                    <li class="item">
-                        <img src="img/christimascup.jpg" class="img" id="item2" size>
-                        <p class="txtBolos" id="it2">Christimas Cup-Cake</p>
-                        <p class="txtBolos" id="ip2">R$ 50,00 - 20und</p>
-                        
-                    </li>
-                    <li class="item">
-                        <img src="img/hearth.jpg" class="img" id="item3" size>
-                        <p class="txtBolos" id="it3">Hearth-Attack</p>
-                        <p class="txtBolos" id="ip3">R$ 50,00 - 20und</p>
-                    </li>
-                    <li class="item">
-                        <img src="img/especialcupcake.jpg" class="img" id="item4" size>
-                        <p class="txtBolos" id="it4">Especial Cup-Cake</p>
-                        <p class="txtBolos" id="ip4">R$ 50,00 - 20und</p>
-                    </li>
-            </ul>
-            <p class="feedText1" id="especiais">Naked Cakes</p>
-            <ul>
-                    <li class="item">
-                        <img src="img/nerdset.jpg" class="img" id="item1" size>
-                        <p class="txtBolos" id="it1">Nerd Set</p>
-                        <p class="txtBolos" id="ip1">R$40,00</p>
-                    </li>
-                    <li class="item">
-                        <img src="img/guarda-chuva.jpg" class="img" id="item2" size>
-                        <p class="txtBolos" id="it2">Umbrella</p>
-                        <p class="txtBolos" id="ip2">R$ 40,00</p>
-                        
-                    </li>
-                    <li class="item">
-                        <img src="img/love.jpg" class="img" id="item3" size>
-                        <p class="txtBolos" id="it3">Love</p>
-                        <p class="txtBolos" id="ip3">R$ 40,00</p>
-                    </li>
-                    <li class="item">
-                        <img src="img/beerset.jpg" class="img" id="item4" size>
-                        <p class="txtBolos" id="it4">Beer and DJ</p>
-                        <p class="txtBolos" id="ip4">R$ 40,00</p>
-                    </li>
-            </ul>
-            <h1  class="textOpenFeed" id="showMore">Ver Mais</h1>
-            <ul id="plusGalery">
-                <li class="item">
-                    <img src="img/plus1.jpg" class="img" id="item1" size>
-                    <p class="txtBolos" id="ip1">R$50,00</p>
-                </li>
-                <li class="item">
-                    <img src="img/plus2.jpg" class="img" id="item2" size>
-                    <p class="txtBolos" id="ip2">R$ 40,00</p>
-                </li>
-                <li class="item">
-                    <img src="img/plus3.jpg" class="img" id="item3" size>
-                    <p class="txtBolos" id="ip3">R$ 60,00</p>
-                </li>
-                <li class="item">
-                    <img src="img/plus4.jpg" class="img" id="item4" size>
-                    <p class="txtBolos" id="ip4">R$ 40,00</p>
-                </li>
-                <li class="item">
-                    <img src="img/plus5.jpg" class="img" id="item1" size>
-                    <p class="txtBolos" id="ip1">R$70,00</p>
-                </li>
-                <li class="item">
-                    <img src="img/plus6.jpg" class="img" id="item2" size>
-                    <p class="txtBolos" id="ip2">R$ 40,00</p>
-                </li>
-                <li class="item">
-                    <img src="img/plus7.jpg" class="img" id="item3" size>
-                    <p class="txtBolos" id="ip3">R$ 80,00</p>
-                </li>   
-                <li class="item">
-                    <img src="img/plus8.jpg" class="img" id="item4" size>
-                    <p class="txtBolos" id="ip4">R$ 60,00</p>
-                </li>
-                <li class="item">
-                    <img src="img/plus9.jpg" class="img" id="item1" size>
-                    <p class="txtBolos" id="ip1">R$40,00</p>
-
-                </li>
-                <li class="item">
-                    <img src="img/plus10.jpg" class="img" id="item2" size>
-                    <p class="txtBolos" id="ip2">R$ 90,00</p>
-                </li>
-                <li class="item">
-                    <img src="img/plus11.jpg" class="img" id="item3" size>
-                    <p class="txtBolos" id="ip3">R$ 50,00</p>
-                </li>
-                <li class="item">
-                    <img src="img/plus12.jpg" class="img" id="item4" size>
-                    <p class="txtBolos" id="ip4">R$ 40,00</p>
+                    <div class="text-center">
+                    <a class="btn btn-success" th:href = "@{/carrinho/add/{id}(id = ${bolo.id})}">Adicionar ao Carrinho</a>
+                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href = "@{/bolos/excluir/{id}(id = ${bolo.id})}"><button type="button" class="btn btn-danger">Excluir</button> </a> </td>
+					<a sec:authorize="hasRole('ROLE_ADMIN')" th:href = "@{/bolos/atualizar/{id}(id = ${bolo.id})}"><button type="button" class="btn btn-primary">Atualizar</button> </a> </td>
+                    </div>
+                    
+                    </div>
                 </li>
             </ul>
         </div>
@@ -202,7 +112,7 @@
     </section>
 </div>
 
-<script src="jquery/jquery.js"></script>
+    <script src="../static/jquery/jquery.js"></script>
 <script>
     $(document).ready(function(){    
         $("#subtitle2").hide();

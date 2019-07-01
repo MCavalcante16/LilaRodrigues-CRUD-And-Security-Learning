@@ -1,35 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lila Rodrigues Bolos Artísticos</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/css.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/css.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Julius+Sans+One|Sacramento" rel="stylesheet">
 </head>
-<body>
+<body>.
+
     <section class="sections" id="init1">
+    <a id="loginbutton" class="btn btn-primary" th:href="@{/login}" role="button">Login</a>
+    <a id="logoutbutton" class="btn btn-primary" th:href="@{/login?logout}" role="button" sec:authorize="hasRole('ROLE_USER')">Logout</a>
+     <a id="logoutbutton" class="btn btn-primary" th:href="@{/login?logout}" role="button" sec:authorize="hasRole('ROLE_ADMIN')">Logout</a>
+   
         <div id="menu">
             <ul>
                 <li id="inicio">
                     <a>Início</a>
                 </li>
                 <li id="sobre">
-                    <a href="sobre.html" >Sobre</a>
+                    <a th:href = "@{/sobre}" >Sobre</a>
                 </li>
                 <li id="bolos">
-                    <a href="bolos.html">Bolos</a>
+                    <a th:href = "@{/bolos}">Bolos</a>
                 </li>
                 <li id="contato">
-                    <a href="contato.html">Contato</a>
+                    <a th:href = "@{/contato}">Contato</a>
                 </li>
                 <li id="cadastro">
-                    <a href="cadastro.html">Cadastro</a>
+                    <a th:href = "@{/cadastro}">Cadastro</a>
                 </li>
             </ul>
+            <span id="carrinho" sec:authorize="isAuthenticated()">
+                	<a class="btn btn-primary" th:href="@{/carrinho}">Carrinho</a>
+            </span>
         </div>
+        
         <img id="logo" src="img/logopaintnet.png">
         <h1 class="textTop" id="title">Lila Rodrigues</h1>
         <h1 class="textTop" id="subtitle">Bolos Artísticos</h1><br>
@@ -175,110 +186,8 @@
         </section>
     </div>
 
-    <script src="../static/jquery/jquery.js"></script>
-    <script>
-        $(document).ready(function(){
-            $(".textTop").hide();
-            $(".textTop").fadeToggle(1000);
-            $(".textOpenFeed").hide();
-            $(".textOpenFeed").fadeIn(2500);
-            $("#menu").hide();
-            $("#menu").fadeIn(2500);
-            $("#menu").slideDown(1000);
-            $("#sec2").hide();
-            
-            $("#sec4").hide();
-            $("#sec5").hide();
-            $("#sec6").hide();
-            $("#sec7").hide();
-            $("#sec8").hide();
-            $("#sec9").hide();
-
-            $(window).scroll(function(){
-                $("#sec2").each(function(i){
-                    var down_obj2 = $(this).offset().top + $(this).outerHeight();
-                    var down_win2 = $(window).scrollTop() + $(window).height();
-
-                    if (down_win2 > down_obj2){
-                        $(this).fadeIn(2000);
-                    }
-                });
-            })
-            $(window).scroll(function(){
-                $("#sec3").each(function(i){
-                    var down_obj3 = $(this).offset().top + $(this).outerHeight();
-                    var down_win3 = $(window).scrollTop() + $(window).height();
-
-                    if (down_win3 > down_obj3){
-                        $(this).fadeIn(2000);
-                    }
-                });
-            })
-            $(window).scroll(function(){
-                $("#sec4").each(function(i){
-                    var down_obj = $(this).offset().top + $(this).outerHeight();
-                    var down_win = $(window).scrollTop() + $(window).height();
-
-                    if (down_win > down_obj){
-                        $(this).fadeIn(1000);
-                    }
-                })
-            })
-            $(window).scroll(function(){
-                $("#sec5").each(function(i){
-                    var down_obj = $(this).offset().top + $(this).outerHeight();
-                    var down_win = $(window).scrollTop() + $(window).height();
-
-                    if (down_win > down_obj){
-                        $(this).fadeIn(1000);
-                    }
-                })
-            })
-            $(window).scroll(function(){
-                $("#sec6").each(function(i){
-                    var down_obj = $(this).offset().top + $(this).outerHeight();
-                    var down_win = $(window).scrollTop() + $(window).height();
-
-                    if (down_win > down_obj){
-                        $(this).fadeIn(1000);
-                    }
-                })
-            })
-            $(window).scroll(function(){
-                $("#sec7").each(function(i){
-                    var down_obj = $(this).offset().top + $(this).outerHeight();
-                    var down_win = $(window).scrollTop() + $(window).height();
-
-                    if (down_win > down_obj){
-                        $(this).fadeIn(1000);
-                    }
-                })
-            })
-            $(window).scroll(function(){
-                $("#sec8").each(function(i){
-                    var down_obj = $(this).offset().top + $(this).outerHeight();
-                    var down_win = $(window).scrollTop() + $(window).height();
-
-                    if (down_win > down_obj){
-                        $(this).fadeIn(1000);
-                    }
-                })
-            })
-            $(window).scroll(function(){
-                $("#sec9").each(function(i){
-                    var down_obj = $(this).offset().top + $(this).outerHeight();
-                    var down_win = $(window).scrollTop() + $(window).height();
-
-                    if (down_win > down_obj){
-                        $(this).fadeIn(1000);
-                    }
-                })
-            })
+   
 
 
-        });
-
-        
-    </script>
 </body>
 </html>

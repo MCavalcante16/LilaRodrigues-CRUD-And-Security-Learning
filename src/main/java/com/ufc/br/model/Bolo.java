@@ -1,9 +1,14 @@
 package com.ufc.br.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Bolo {
@@ -12,8 +17,17 @@ public class Bolo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id; 
 	
+	@NotBlank(message = "O campo 'nome' não foi preenchido")
 	private String nome;
+	
+	@NotNull(message = "O campo 'preco' não foi preenchido")
 	private float preco;
+	
+	@ManyToMany(mappedBy = "bolos")
+	private List<Pedido> pedidos;
+	
+	@ManyToMany(mappedBy = "carrinho")
+	private List<Usuario> usuarios;
 	
 	public String getNome() {
 		return nome;
@@ -22,8 +36,6 @@ public class Bolo {
 		this.nome = nome;
 	}
 
-	
-	
 	public Long getId() {
 		return Id;
 	}

@@ -1,31 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lila Rodrigues Bolos Artísticos</title>
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/css.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Julius+Sans+One|Sacramento" rel="stylesheet">
 </head>
 <body>
     <section class="sections" id="init12">
-        <div id="menu">
+	    <a id="loginbutton" class="btn btn-primary" th:href="@{/login}" role="button">Login</a>
+	    <a id="logoutbutton" class="btn btn-primary" th:href="@{/login?logout}" role="button" sec:authorize="hasRole('ROLE_USER')">Logout</a>
+	     <a id="logoutbutton" class="btn btn-primary" th:href="@{/login?logout}" role="button" sec:authorize="hasRole('ROLE_ADMIN')">Logout</a>
+	      <div id="menu">
             <ul>
                 <li id="inicio">
-                    <a href="inicio.html">Início</a>
+                    <a th:href = "@{/inicio}">Início</a>
                 </li>
                 <li id="sobre">
-                    <a >Sobre</a>
+                    <a>Sobre</a>
                 </li>
                 <li id="bolos">
-                    <a href="bolos.html">Bolos</a>
+                    <a th:href = "@{/bolos}">Bolos</a>
                 </li>
                 <li id="contato">
-                    <a href="contato.html">Contato</a>
+                    <a th:href = "@{/contato}">Contato</a>
+                </li>
+                <li id="cadastro">
+                    <a th:href = "@{/cadastro}">Cadastro</a>
                 </li>
             </ul>
+            <span id="carrinho" sec:authorize="isAuthenticated()">
+                	<a class="btn btn-primary" th:href="@{/carrinho}">Carrinho</a>
+            </span>
         </div>
     </div>
     <img id="logo2" src="img/logopaintnet.png">
